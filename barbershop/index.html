@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>BLACKLINE Barbershop</title>
+<script>if(/tgWebApp/.test(location.hash+location.search))document.write('<script src="https://telegram.org/js/telegram-web-app.js"><\/script>')</script>
+<style>
+  html,body{height:100%}
+  body{background:radial-gradient(circle at 50% 0%,#23252b,#08090a 70%);font-family:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;-webkit-tap-highlight-color:transparent}
+  .phone{width:100%;height:100dvh;background:#0c0d0f;position:relative;overflow:hidden;display:flex;flex-direction:column}
+  @media (min-width:600px){
+    .phone{width:400px;height:820px;max-height:94vh;border-radius:48px;border:10px solid #26282d;
+      box-shadow:0 0 0 2px #3a3d44,0 40px 100px rgba(0,0,0,.8),0 0 80px rgba(200,161,90,.08)}
+    .notch{display:block!important}
+  }
+  .scroll{overflow-y:auto;scrollbar-width:none}.scroll::-webkit-scrollbar{display:none}
+  .step{position:absolute;inset:0;overflow-y:auto;scrollbar-width:none;opacity:0;pointer-events:none;transform:translateX(30px);transition:opacity .35s,transform .35s}
+  .step::-webkit-scrollbar{display:none}
+  .step.active{opacity:1;pointer-events:auto;transform:none}
+  .step.left{transform:translateX(-30px)}
+  .card{transition:all .2s;border:1px solid #2a2c31;background:#1a1b1f}
+  .card:active{transform:scale(.97)}
+  .sel{border-color:#C8A15A!important;background:linear-gradient(135deg,rgba(200,161,90,.16),rgba(200,161,90,.04))!important;box-shadow:0 0 20px rgba(200,161,90,.12)}
+  .gold{background:#C8A15A;color:#131518}
+  .pulse{animation:pulse 2s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(74,222,128,.6)}70%{box-shadow:0 0 0 7px rgba(74,222,128,0)}100%{box-shadow:0 0 0 0 rgba(74,222,128,0)}}
+  .check-circle{stroke-dasharray:166;stroke-dashoffset:166}
+  .check-path{stroke-dasharray:48;stroke-dashoffset:48}
+  .animate .check-circle{animation:draw .7s .1s forwards ease-out}
+  .animate .check-path{animation:draw .4s .7s forwards ease-out}
+  .animate .check-wrap{animation:pop .6s .9s ease-out}
+  @keyframes draw{to{stroke-dashoffset:0}}
+  @keyframes pop{0%{transform:scale(1)}50%{transform:scale(1.12)}100%{transform:scale(1)}}
+  .bar{transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+  .bar.hide{transform:translateY(120%)}
+  .fade-up{animation:fu .5s both}@keyframes fu{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+  .toast{transition:all .3s;opacity:0;transform:translate(-50%,-10px)}.toast.show{opacity:1;transform:translate(-50%,0)}
+</style>
+<script>(function(){var I={"chevron-left":"<path d=\"m15 18-6-6 6-6\"></path>","share-2":"<circle cx=\"18\" cy=\"5\" r=\"3\"></circle><circle cx=\"6\" cy=\"12\" r=\"3\"></circle><circle cx=\"18\" cy=\"19\" r=\"3\"></circle><line x1=\"8.59\" x2=\"15.42\" y1=\"13.51\" y2=\"17.49\"></line><line x1=\"15.41\" x2=\"8.59\" y1=\"6.51\" y2=\"10.49\"></line>","scissors":"<circle cx=\"6\" cy=\"6\" r=\"3\"></circle><path d=\"M8.12 8.12 12 12\"></path><path d=\"M20 4 8.12 15.88\"></path><circle cx=\"6\" cy=\"18\" r=\"3\"></circle><path d=\"M14.8 14.8 20 20\"></path>","star":"<path d=\"M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z\"></path>","map-pin":"<path d=\"M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0\"></path><circle cx=\"12\" cy=\"10\" r=\"3\"></circle>","user":"<path d=\"M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2\"></path><circle cx=\"12\" cy=\"7\" r=\"4\"></circle>","phone":"<path d=\"M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z\"></path>","send":"<path d=\"M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z\"></path><path d=\"m21.854 2.147-10.94 10.939\"></path>","sparkles":"<path d=\"M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z\"></path><path d=\"M20 3v4\"></path><path d=\"M22 5h-4\"></path><path d=\"M4 17v2\"></path><path d=\"M5 18H3\"></path>","message-circle":"<path d=\"M7.9 20A9 9 0 1 0 4 16.1L2 22Z\"></path>","clock":"<circle cx=\"12\" cy=\"12\" r=\"10\"></circle><polyline points=\"12 6 12 12 16 14\"></polyline>","check":"<path d=\"M20 6 9 17l-5-5\"></path>","calendar-check":"<path d=\"M8 2v4\"></path><path d=\"M16 2v4\"></path><rect width=\"18\" height=\"18\" x=\"3\" y=\"4\" rx=\"2\"></rect><path d=\"M3 10h18\"></path><path d=\"m9 16 2 2 4-4\"></path>","text":"<path d=\"M17 6.1H3\"></path><path d=\"M21 12.1H3\"></path><path d=\"M15.1 18H3\"></path>","ticket":"<path d=\"M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z\"></path><path d=\"M13 5v2\"></path><path d=\"M13 17v2\"></path><path d=\"M13 11v2\"></path>","flame":"<path d=\"M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z\"></path>","crown":"<path d=\"M11.562 3.266a.5.5 0 0 1 .876 0L15.39 8.87a1 1 0 0 0 1.516.294L21.183 5.5a.5.5 0 0 1 .798.519l-2.834 10.246a1 1 0 0 1-.956.734H5.81a1 1 0 0 1-.957-.734L2.02 6.02a.5.5 0 0 1 .798-.519l4.276 3.664a1 1 0 0 0 1.516-.294z\"></path><path d=\"M5 21h14\"></path>","calendar":"<path d=\"M8 2v4\"></path><path d=\"M16 2v4\"></path><rect width=\"18\" height=\"18\" x=\"3\" y=\"4\" rx=\"2\"></rect><path d=\"M3 10h18\"></path>","wallet":"<path d=\"M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1\"></path><path d=\"M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4\"></path>","arrow-right":"<path d=\"M5 12h14\"></path><path d=\"m12 5 7 7-7 7\"></path>","badge-check":"<path d=\"M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z\"></path><path d=\"m9 12 2 2 4-4\"></path>","calendar-clock":"<path d=\"M21 7.5V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h3.5\"></path><path d=\"M16 2v4\"></path><path d=\"M8 2v4\"></path><path d=\"M3 10h5\"></path><path d=\"M17.5 17.5 16 16.3V14\"></path><circle cx=\"16\" cy=\"16\" r=\"6\"></circle>"};
+function mk(n,cls){var p=I[n];if(!p)return null;var s=document.createElementNS('http://www.w3.org/2000/svg','svg');
+s.setAttribute('xmlns','http://www.w3.org/2000/svg');s.setAttribute('width','24');s.setAttribute('height','24');s.setAttribute('viewBox','0 0 24 24');
+s.setAttribute('fill','none');s.setAttribute('stroke','currentColor');s.setAttribute('stroke-width','2');s.setAttribute('stroke-linecap','round');s.setAttribute('stroke-linejoin','round');
+s.setAttribute('class',('lucide lucide-'+n+' '+(cls||'')).trim());s.innerHTML=p;return s}
+window.lucide={createIcons:function(){var l=document.querySelectorAll('[data-lucide]');for(var i=0;i<l.length;i++){var e=l[i],n=e.getAttribute('data-lucide'),s=mk(n,e.getAttribute('class'));if(s&&e.parentNode)e.parentNode.replaceChild(s,e)}}}})();</script>
+<script>window.__icons=function(){try{if(window.lucide)lucide.createIcons()}catch(e){}}</script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%236366f1'/%3E%3Ctext x='16' y='23' font-size='19' text-anchor='middle' fill='white' font-family='Arial' font-weight='700'%3E%D0%91%3C/text%3E%3C/svg%3E">
+<link rel="preload" href="../fonts/inter-Regular.woff" as="font" type="font/woff" crossorigin><link rel="preload" href="../fonts/lora.woff" as="font" type="font/woff" crossorigin>
+<style>*,:after,:before{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/*! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com*/*,:after,:before{border:0 solid #e5e7eb;box-sizing:border-box}:after,:before{--tw-content:""}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;font-family:system-ui,sans-serif;font-feature-settings:normal;font-variation-settings:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-tap-highlight-color:transparent}body{line-height:inherit;margin:0}hr{border-top-width:1px;color:inherit;height:0}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;font-feature-settings:normal;font-size:1em;font-variation-settings:normal}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{border-collapse:collapse;border-color:inherit;text-indent:0}button,input,optgroup,select,textarea{color:inherit;font-family:inherit;font-feature-settings:inherit;font-size:100%;font-variation-settings:inherit;font-weight:inherit;letter-spacing:inherit;line-height:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0}fieldset,legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::-moz-placeholder,textarea::-moz-placeholder{color:#9ca3af;opacity:1}input::placeholder,textarea::placeholder{color:#9ca3af;opacity:1}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{height:auto;max-width:100%}[hidden]:where(:not([hidden=until-found])){display:none}.pointer-events-none{pointer-events:none}.absolute{position:absolute}.relative{position:relative}.inset-x-0{left:0;right:0}.-right-6{right:-1.5rem}.-top-6{top:-1.5rem}.bottom-0{bottom:0}.left-1\/2{left:50%}.top-14{top:3.5rem}.top-2{top:.5rem}.z-10{z-index:10}.z-20{z-index:20}.z-50{z-index:50}.col-span-3{grid-column:span 3/span 3}.-mx-5{margin-left:-1.25rem;margin-right:-1.25rem}.mx-auto{margin-left:auto;margin-right:auto}.mb-1{margin-bottom:.25rem}.mb-2{margin-bottom:.5rem}.mb-3{margin-bottom:.75rem}.mb-4{margin-bottom:1rem}.mb-5{margin-bottom:1.25rem}.ml-auto{margin-left:auto}.mt-0\.5{margin-top:.125rem}.mt-1{margin-top:.25rem}.mt-1\.5{margin-top:.375rem}.mt-2{margin-top:.5rem}.mt-3{margin-top:.75rem}.mt-4{margin-top:1rem}.mt-5{margin-top:1.25rem}.mt-6{margin-top:1.5rem}.flex{display:flex}.grid{display:grid}.hidden{display:none}.h-1\.5{height:.375rem}.h-12{height:3rem}.h-16{height:4rem}.h-2{height:.5rem}.h-24{height:6rem}.h-3{height:.75rem}.h-3\.5{height:.875rem}.h-4{height:1rem}.h-5{height:1.25rem}.h-6{height:1.5rem}.h-7{height:1.75rem}.h-8{height:2rem}.h-9{height:2.25rem}.min-h-0{min-height:0}.min-h-screen{min-height:100vh}.w-1\.5{width:.375rem}.w-12{width:3rem}.w-16{width:4rem}.w-2{width:.5rem}.w-24{width:6rem}.w-3{width:.75rem}.w-3\.5{width:.875rem}.w-4{width:1rem}.w-5{width:1.25rem}.w-6{width:1.5rem}.w-7{width:1.75rem}.w-8{width:2rem}.w-9{width:2.25rem}.w-full{width:100%}.min-w-0{min-width:0}.flex-1{flex:1 1 0%}.shrink-0{flex-shrink:0}.-translate-x-1\/2{--tw-translate-x:-50%}.-translate-x-1\/2,.transform{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.cursor-not-allowed{cursor:not-allowed}.cursor-pointer{cursor:pointer}.resize-none{resize:none}.grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-1{gap:.25rem}.gap-1\.5{gap:.375rem}.gap-2{gap:.5rem}.gap-3{gap:.75rem}.gap-4{gap:1rem}.space-y-2>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-bottom:calc(.5rem*var(--tw-space-y-reverse));margin-top:calc(.5rem*(1 - var(--tw-space-y-reverse)))}.space-y-3>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-bottom:calc(.75rem*var(--tw-space-y-reverse));margin-top:calc(.75rem*(1 - var(--tw-space-y-reverse)))}.divide-y>:not([hidden])~:not([hidden]){--tw-divide-y-reverse:0;border-bottom-width:calc(1px*var(--tw-divide-y-reverse));border-top-width:calc(1px*(1 - var(--tw-divide-y-reverse)))}.divide-graphite-700>:not([hidden])~:not([hidden]){--tw-divide-opacity:1;border-color:rgb(42 44 49/var(--tw-divide-opacity,1))}.overflow-hidden{overflow:hidden}.overflow-x-auto{overflow-x:auto}.whitespace-nowrap{white-space:nowrap}.rounded-2xl{border-radius:1rem}.rounded-3xl{border-radius:1.5rem}.rounded-full{border-radius:9999px}.rounded-xl{border-radius:.75rem}.rounded-t-3xl{border-top-left-radius:1.5rem;border-top-right-radius:1.5rem}.border{border-width:1px}.border-2{border-width:2px}.border-b{border-bottom-width:1px}.border-t{border-top-width:1px}.border-dashed{border-style:dashed}.border-amber2-500{--tw-border-opacity:1;border-color:rgb(200 161 90/var(--tw-border-opacity,1))}.border-amber2-500\/20{border-color:rgba(200,161,90,.2)}.border-amber2-500\/40{border-color:rgba(200,161,90,.4)}.border-amber2-600\/50{border-color:rgba(154,122,60,.5)}.border-graphite-600{--tw-border-opacity:1;border-color:rgb(58 61 68/var(--tw-border-opacity,1))}.border-graphite-700{--tw-border-opacity:1;border-color:rgb(42 44 49/var(--tw-border-opacity,1))}.border-transparent{border-color:transparent}.bg-amber2-500{--tw-bg-opacity:1;background-color:rgb(200 161 90/var(--tw-bg-opacity,1))}.bg-amber2-500\/10{background-color:rgba(200,161,90,.1)}.bg-amber2-500\/20{background-color:rgba(200,161,90,.2)}.bg-amber2-600{--tw-bg-opacity:1;background-color:rgb(154 122 60/var(--tw-bg-opacity,1))}.bg-black{--tw-bg-opacity:1;background-color:rgb(0 0 0/var(--tw-bg-opacity,1))}.bg-graphite-600{--tw-bg-opacity:1;background-color:rgb(58 61 68/var(--tw-bg-opacity,1))}.bg-graphite-700{--tw-bg-opacity:1;background-color:rgb(42 44 49/var(--tw-bg-opacity,1))}.bg-graphite-800{--tw-bg-opacity:1;background-color:rgb(30 32 36/var(--tw-bg-opacity,1))}.bg-graphite-900{--tw-bg-opacity:1;background-color:rgb(19 21 24/var(--tw-bg-opacity,1))}.bg-graphite-900\/95{background-color:rgba(19,21,24,.95)}.bg-green-400{--tw-bg-opacity:1;background-color:rgb(74 222 128/var(--tw-bg-opacity,1))}.bg-transparent{background-color:transparent}.bg-gradient-to-br{background-image:linear-gradient(to bottom right,var(--tw-gradient-stops))}.from-graphite-800{--tw-gradient-from:#1e2024 var(--tw-gradient-from-position);--tw-gradient-to:rgba(30,32,36,0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to)}.to-graphite-900{--tw-gradient-to:#131518 var(--tw-gradient-to-position)}.fill-amber2-400{fill:#d8b572}.object-cover{-o-object-fit:cover;object-fit:cover}.p-3{padding:.75rem}.p-4{padding:1rem}.p-5{padding:1.25rem}.px-2{padding-left:.5rem;padding-right:.5rem}.px-2\.5{padding-left:.625rem;padding-right:.625rem}.px-3{padding-left:.75rem;padding-right:.75rem}.px-4{padding-left:1rem;padding-right:1rem}.px-5{padding-left:1.25rem;padding-right:1.25rem}.py-0\.5{padding-bottom:.125rem;padding-top:.125rem}.py-1{padding-bottom:.25rem;padding-top:.25rem}.py-2{padding-bottom:.5rem;padding-top:.5rem}.py-2\.5{padding-bottom:.625rem;padding-top:.625rem}.py-3{padding-bottom:.75rem;padding-top:.75rem}.py-3\.5{padding-bottom:.875rem;padding-top:.875rem}.py-8{padding-bottom:2rem;padding-top:2rem}.pb-2{padding-bottom:.5rem}.pb-3{padding-bottom:.75rem}.pb-4{padding-bottom:1rem}.pb-40{padding-bottom:10rem}.pb-5{padding-bottom:1.25rem}.pb-6{padding-bottom:1.5rem}.pb-8{padding-bottom:2rem}.pt-1{padding-top:.25rem}.pt-2{padding-top:.5rem}.pt-3{padding-top:.75rem}.pt-5{padding-top:1.25rem}.text-center{text-align:center}.text-right{text-align:right}.font-serif{font-family:Georgia,serif}.text-2xl{font-size:1.5rem;line-height:2rem}.text-\[10px\]{font-size:10px}.text-\[11px\]{font-size:11px}.text-\[15px\]{font-size:15px}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:.75rem;line-height:1rem}.font-bold{font-weight:700}.font-normal{font-weight:400}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.leading-snug{line-height:1.375}.leading-tight{line-height:1.25}.tracking-wide{letter-spacing:.025em}.tracking-widest{letter-spacing:.1em}.text-amber2-400{--tw-text-opacity:1;color:rgb(216 181 114/var(--tw-text-opacity,1))}.text-green-400{--tw-text-opacity:1;color:rgb(74 222 128/var(--tw-text-opacity,1))}.text-zinc-100{--tw-text-opacity:1;color:rgb(244 244 245/var(--tw-text-opacity,1))}.text-zinc-300{--tw-text-opacity:1;color:rgb(212 212 216/var(--tw-text-opacity,1))}.text-zinc-400{--tw-text-opacity:1;color:rgb(161 161 170/var(--tw-text-opacity,1))}.text-zinc-500{--tw-text-opacity:1;color:rgb(113 113 122/var(--tw-text-opacity,1))}.line-through{text-decoration-line:line-through}.opacity-0{opacity:0}.opacity-30{opacity:.3}.shadow-lg{--tw-shadow:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color),0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.shadow-amber-500\/20{--tw-shadow-color:rgba(245,158,11,.2);--tw-shadow:var(--tw-shadow-colored)}.outline-none{outline:2px solid transparent;outline-offset:2px}.blur-2xl{--tw-blur:blur(40px)}.blur-2xl,.filter{filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.backdrop-blur{--tw-backdrop-blur:blur(8px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition{transition-duration:.15s;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,-webkit-backdrop-filter;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter,-webkit-backdrop-filter;transition-timing-function:cubic-bezier(.4,0,.2,1)}.transition-all{transition-duration:.15s;transition-property:all;transition-timing-function:cubic-bezier(.4,0,.2,1)}.ease-out{transition-timing-function:cubic-bezier(0,0,.2,1)}.focus-within\:border-amber2-500:focus-within{--tw-border-opacity:1;border-color:rgb(200 161 90/var(--tw-border-opacity,1))}.focus\:border-amber2-500:focus,.hover\:border-amber2-500:hover{--tw-border-opacity:1;border-color:rgb(200 161 90/var(--tw-border-opacity,1))}.active\:scale-95:active{--tw-scale-x:.95;--tw-scale-y:.95;transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.disabled\:opacity-40:disabled{opacity:.4}.disabled\:grayscale:disabled{--tw-grayscale:grayscale(100%);filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}@media (min-width:640px){.sm\:mt-7{margin-top:1.75rem}.sm\:p-4{padding:1rem}.sm\:pt-9{padding-top:2.25rem}}</style>
+<style id="skin">@font-face{font-family:"Inter";font-weight:400;font-display:swap;src:url(../fonts/inter-Regular.woff) format("woff")}
+@font-face{font-family:"Inter";font-weight:500;font-display:swap;src:url(../fonts/inter-Medium.woff) format("woff")}
+@font-face{font-family:"Inter";font-weight:600;font-display:swap;src:url(../fonts/inter-SemiBold.woff) format("woff")}
+@font-face{font-family:"Lora";font-weight:400 700;font-style:normal;font-display:swap;src:url(../fonts/lora.woff) format("woff")}
+@font-face{font-family:"Lora";font-weight:400 700;font-style:italic;font-display:swap;src:url(../fonts/lora-italic.woff) format("woff")}
+body{font-family:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif!important;-webkit-font-smoothing:antialiased}
+h1,h2,h3,.font-serif,.font-display,.serif{font-family:"Lora",Georgia,"Times New Roman",serif!important;font-weight:500!important;letter-spacing:-.01em!important}
+.font-bold,.font-extrabold,.font-black{font-weight:600!important}
+.uppercase{text-transform:none!important}
+.tracking-wider,.tracking-widest,.tracking-wide{letter-spacing:0!important}
+.rounded-3xl{border-radius:16px!important}.rounded-2xl{border-radius:12px!important}.rounded-xl{border-radius:9px!important}
+.shadow-2xl,.shadow-xl{box-shadow:0 18px 40px -18px rgba(0,0,0,.55)!important}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+[class*="tracking-["]{letter-spacing:0!important}
+body{background:radial-gradient(circle at 50% 0%,#1a1c1f,#060708 70%)!important}
+.gold{background:#C8A15A!important;color:#101214!important}
+.sel{box-shadow:none!important}
+.phone{box-shadow:0 0 0 1px #34373d,0 40px 100px rgba(0,0,0,.8)!important}
+.text-\[10px\]{font-size:11px!important}
+</style>
+</head>
+<body class="min-h-screen flex items-center justify-center sm:p-4 text-zinc-100">
+<div class="phone">
+  <div class="notch hidden absolute top-2 left-1/2 -translate-x-1/2 w-24 h-6 bg-black rounded-full z-50"></div>
+  <div class="shrink-0 text-center text-[10px] font-semibold tracking-wide text-amber2-400 bg-amber2-500/10 border-b border-amber2-500/20 py-1 sm:mt-7 z-10">ПРИМЕР · название, адрес, отзывы и данные выдуманы</div>
+  <div id="toast" class="toast absolute top-14 left-1/2 z-50 bg-graphite-700 text-sm px-4 py-2 rounded-full border border-graphite-600 whitespace-nowrap"></div>
+
+  <!-- top bar -->
+  <div class="flex items-center justify-between px-5 pt-5 sm:pt-9 pb-3 shrink-0 z-10">
+    <button id="backBtn" class="w-9 h-9 rounded-full bg-graphite-800 border border-graphite-700 flex items-center justify-center opacity-0 pointer-events-none transition"><i data-lucide="chevron-left" class="w-5 h-5"></i></button>
+    <div class="flex items-center gap-2" id="dots"></div>
+    <div class="w-9 h-9 rounded-full bg-graphite-800 border border-graphite-700 flex items-center justify-center"><i data-lucide="share-2" class="w-4 h-4 text-zinc-400"></i></div>
+  </div>
+
+  <div class="relative flex-1 min-h-0">
+    <!-- STEP 0: services -->
+    <section class="step active px-5 pb-40" data-step="0">
+      <div class="rounded-3xl p-4 mb-5 border border-graphite-700 bg-gradient-to-br from-graphite-800 to-graphite-900 flex gap-4 items-center">
+        <div class="w-16 h-16 rounded-2xl gold flex items-center justify-center shrink-0"><i data-lucide="scissors" class="w-8 h-8"></i></div>
+        <div class="min-w-0">
+          <h1 class="font-serif text-xl font-bold leading-tight">BLACKLINE <span class="text-amber2-400">Barbershop</span></h1>
+          <div class="flex items-center gap-3 mt-1.5 text-xs">
+            <span class="flex items-center gap-1 text-amber2-400 font-semibold"><i data-lucide="star" class="w-3.5 h-3.5 fill-amber2-400"></i>4.9 <span class="text-zinc-500 font-normal">(312)</span></span>
+            <span class="flex items-center gap-1.5 text-green-400"><span class="w-2 h-2 rounded-full bg-green-400 pulse"></span>Открыто до 21:00</span>
+          </div>
+          <div class="text-xs text-zinc-500 mt-1 flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3"></i>ул. Тверская, 12</div>
+        </div>
+      </div>
+      <h2 class="text-xs uppercase tracking-widest text-zinc-500 mb-3">Выберите услугу</h2>
+      <div id="services" class="space-y-3"></div>
+    </section>
+
+    <!-- STEP 1: master -->
+    <section class="step px-5 pb-40" data-step="1">
+      <h2 class="font-serif text-2xl font-bold mb-1">Ваш мастер</h2>
+      <p class="text-sm text-zinc-500 mb-5">Выберите специалиста</p>
+      <div id="masters" class="space-y-3"></div>
+    </section>
+
+    <!-- STEP 2: datetime -->
+    <section class="step px-5 pb-40" data-step="2">
+      <h2 class="font-serif text-2xl font-bold mb-1">Дата и время</h2>
+      <p class="text-sm text-zinc-500 mb-5">Свободные окна мастера <span id="dtMaster" class="text-amber2-400"></span></p>
+      <div id="dates" class="flex gap-2 overflow-x-auto scroll pb-2 -mx-5 px-5"></div>
+      <h3 class="text-xs uppercase tracking-widest text-zinc-500 mt-6 mb-3">Время</h3>
+      <div id="times" class="grid grid-cols-3 gap-3"></div>
+      <h3 class="text-xs uppercase tracking-widest text-zinc-500 mt-6 mb-3">Ваше имя и телефон</h3>
+      <div class="space-y-2">
+        <div class="flex items-center gap-3 bg-graphite-900 border border-graphite-700 rounded-xl px-3 focus-within:border-amber2-500 transition"><i data-lucide="user" class="w-4 h-4 text-zinc-500"></i><input id="name" type="text" autocomplete="name" placeholder="Имя" class="w-full bg-transparent py-3 text-sm outline-none"></div>
+        <div class="flex items-center gap-3 bg-graphite-900 border border-graphite-700 rounded-xl px-3 focus-within:border-amber2-500 transition"><i data-lucide="phone" class="w-4 h-4 text-zinc-500"></i><input id="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 900 000-00-00" class="w-full bg-transparent py-3 text-sm outline-none"></div>
+        <p class="text-[11px] text-zinc-500 pt-1">Это пример: введите любые данные, они нигде не сохраняются</p>
+      </div>
+    </section>
+
+    <!-- STEP 3: confirm -->
+    <section class="step px-5 pb-40" data-step="3">
+      <div id="successIcon" class="flex flex-col items-center pt-2 pb-5">
+        <div class="check-wrap">
+          <svg width="96" height="96" viewBox="0 0 56 56" fill="none">
+            <circle class="check-circle" cx="28" cy="28" r="26.5" stroke="#C8A15A" stroke-width="2.5" stroke-linecap="round"/>
+            <path class="check-path" d="M16 29l8 8 16-17" stroke="#D8B572" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h2 class="font-serif text-2xl font-bold mt-3">Всё готово!</h2>
+        <p class="text-sm text-zinc-500">Проверьте детали записи</p>
+      </div>
+      <div id="summary" class="rounded-3xl border border-graphite-700 bg-graphite-900 divide-y divide-graphite-700"></div>
+      <div class="mt-4">
+        <label class="text-xs uppercase tracking-widest text-zinc-500">Комментарий</label>
+        <textarea id="comment" rows="2" placeholder="Пожелания к стрижке…" class="mt-2 w-full bg-graphite-900 border border-graphite-700 rounded-2xl p-3 text-sm outline-none focus:border-amber2-500 resize-none"></textarea>
+      </div>
+    </section>
+
+    <!-- STEP 4: sent -->
+    <section class="step px-5 pb-8" data-step="4">
+      <div class="text-center pt-1 pb-4">
+        <div class="w-16 h-16 mx-auto rounded-full gold flex items-center justify-center mb-3"><i data-lucide="send" class="w-7 h-7"></i></div>
+        <h2 class="font-serif text-2xl font-bold">Бронь отправлена</h2>
+        <p class="text-zinc-400 text-sm mt-1" id="sentText"></p>
+      </div>
+      <div class="relative rounded-3xl border border-amber2-600/50 bg-gradient-to-br from-graphite-800 to-graphite-900 overflow-hidden">
+        <div class="px-4 py-3 flex items-center justify-between border-b border-dashed border-graphite-600">
+          <span class="font-serif font-bold">BLACK<span class="text-amber2-400">LINE</span></span>
+          <span class="text-[11px] text-zinc-500">Талон № <span id="tkNum"></span></span>
+        </div>
+        <div id="ticket" class="px-4 py-2 text-sm"></div>
+      </div>
+      <button id="resetBtn" class="w-full mt-4 py-3 rounded-2xl border border-graphite-600 text-sm hover:border-amber2-500 transition">Новая запись</button>
+      <div class="mt-5 rounded-3xl p-5 relative overflow-hidden border border-amber2-500/40" style="background:linear-gradient(135deg,rgba(245,185,66,.18),rgba(14,15,17,.9))">
+        <div class="absolute -right-6 -top-6 w-24 h-24 rounded-full bg-amber2-500/20 blur-2xl"></div>
+        <div class="flex items-center gap-2 text-amber2-400 text-[11px] uppercase tracking-widest font-semibold mb-2"><i data-lucide="sparkles" class="w-3.5 h-3.5"></i>Для владельцев бизнеса</div>
+        <p class="font-serif text-lg font-bold leading-snug">Хотите такую же запись клиентов в Telegram?</p>
+        <p class="text-sm text-zinc-300 mt-1.5 mb-4">Сделаю за <b class="text-amber2-400">2-4 дня</b></p>
+        <a id="ctaVk" data-ext="vk" href="https://vk.ru/id808492928" target="_blank" rel="noopener" class="gold w-full py-3.5 rounded-2xl font-bold text-[15px] flex items-center justify-center gap-2 active:scale-95 transition shadow-lg shadow-amber-500/20"><i data-lucide="message-circle" class="w-5 h-5"></i>Написать во ВКонтакте</a><div class="grid grid-cols-2 gap-2 mt-2"><a id="ctaMax" data-ext="max" href="https://max.ru/u/f9LHodD0cOKlS1KQpKYMxh_HcrIwp9TskxGw-dTBXTRJ1ByClVr-fehLSLg" target="_blank" rel="noopener" class="py-3 rounded-2xl text-sm font-semibold border border-amber2-500/40 text-amber2-400 flex items-center justify-center active:scale-95 transition">В MAX</a><a id="ctaTg" data-ext="tg" href="#" target="_blank" rel="noopener" class="py-3 rounded-2xl text-sm font-semibold border border-amber2-500/40 text-amber2-400 flex items-center justify-center active:scale-95 transition">В Telegram</a></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- bottom bar -->
+  <div id="bar" class="bar hide absolute bottom-0 inset-x-0 z-20 p-4 pb-6 bg-graphite-900/95 backdrop-blur border-t border-graphite-700 rounded-t-3xl">
+    <div id="chips" class="flex flex-wrap gap-1.5 mb-3 text-xs"></div>
+    <div class="flex items-center gap-4">
+      <div class="shrink-0">
+        <div class="text-[11px] text-zinc-500">Итого</div>
+        <div class="text-xl font-bold text-amber2-400" id="total">0 ₽</div>
+        <div class="text-[11px] text-zinc-500" id="totalTime"></div>
+      </div>
+      <button id="nextBtn" class="gold flex-1 py-3.5 rounded-2xl font-bold text-[15px] flex items-center justify-center gap-2 active:scale-95 transition disabled:opacity-40 disabled:grayscale"></button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ВАЖНО: впиши сюда свой Telegram-username без @ (например 'ivan_dev')
+const TG_USER = 'panyaaya';
+const TG_LINK = 'https://t.me/' + TG_USER + '?text=' + encodeURIComponent('Привет! Видел демо барбершопа, хочу такое же приложение для записи.');
+document.getElementById('ctaTg').href = 'https://t.me/' + TG_USER + '?text=' + encodeURIComponent('Привет! Видел демо барбершопа, хочу такое же приложение для записи.');
+document.querySelectorAll('a[data-ext]').forEach((a) => a.addEventListener('click', (e) => {
+  const w = window.Telegram && window.Telegram.WebApp;
+  if (w && w.initData) { e.preventDefault(); if (a.dataset.ext === 'tg') w.openTelegramLink(a.href); else w.openLink(a.href); }
+}));
+
+const tg = window.Telegram?.WebApp; if (tg) { tg.ready(); tg.expand(); }
+
+const SERVICES = [
+  {id:'cut', name:'Стрижка', desc:'Классическая или современная, мытьё головы, укладка', price:2500, min:60, icon:'scissors'},
+  {id:'beard', name:'Борода', desc:'Моделирование, горячее полотенце, масло', price:1800, min:40, icon:'flame'},
+  {id:'combo', name:'Комплекс', desc:'Стрижка + борода + уход. Выгода 400 ₽', price:3900, min:90, icon:'crown', badge:'Хит'},
+];
+const MASTERS = [
+  {id:'m1', name:'Артём', role:'Топ-барбер', slots:5, rate:'5.0'},
+  {id:'m2', name:'Максим', role:'Барбер', slots:3, rate:'4.9'},
+  {id:'m3', name:'Илья', role:'Барбер', slots:8, rate:'4.8'},
+];
+const TIMES = ['10:00','11:30','12:00','13:00','14:30','16:00','17:00','18:00','19:30'];
+const MONTHS = ['янв','фев','мар','апр','мая','июн','июл','авг','сен','окт','ноя','дек'];
+const MONTHS_FULL = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
+const DAYS = ['Вс','Пн','Вт','Ср','Чт','Пт','Сб'];
+
+const state = {step:0, services:new Set(), master:null, date:null, time:null};
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fmt = n => n.toLocaleString('ru-RU') + ' ₽';
+const dates = Array.from({length:10},(_,i)=>{const d=new Date();d.setDate(d.getDate()+i);return d});
+const dateKey = d => d.toDateString();
+// deterministic "busy" slots per master/date
+const busy = (m,d,t) => { let h=0; for (const c of m+d.getDate()+t) h=(h*31+c.charCodeAt(0))%97; return h%4===0; };
+
+function toast(t){const e=$('#toast');e.textContent=t;e.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove('show'),1800)}
+function haptic(){try{tg?.HapticFeedback?.selectionChanged()}catch{}}
+
+function renderServices(){
+  $('#services').innerHTML = SERVICES.map((s,i)=>`
+    <div data-id="${s.id}" class="card ${state.services.has(s.id)?'sel':''} fade-up rounded-2xl p-4 flex items-center gap-4 cursor-pointer" style="animation-delay:${i*70}ms">
+      <div class="w-12 h-12 rounded-xl bg-graphite-700 flex items-center justify-center text-amber2-400 shrink-0"><i data-lucide="${s.icon}" class="w-6 h-6"></i></div>
+      <div class="flex-1 min-w-0">
+        <div class="font-semibold flex items-center gap-2">${s.name}${s.badge?`<span class="text-[10px] gold px-2 py-0.5 rounded-full font-bold">${s.badge}</span>`:''}</div>
+        <div class="text-xs text-zinc-500 leading-snug mt-0.5">${s.desc}</div>
+        <div class="text-xs text-zinc-400 mt-1.5 flex items-center gap-1"><i data-lucide="clock" class="w-3 h-3"></i>${s.min} мин</div>
+      </div>
+      <div class="text-right shrink-0">
+        <div class="font-bold text-amber2-400">${fmt(s.price)}</div>
+        <div class="mt-2 w-6 h-6 ml-auto rounded-full border ${state.services.has(s.id)?'gold border-transparent':'border-graphite-600'} flex items-center justify-center">${state.services.has(s.id)?'<i data-lucide="check" class="w-4 h-4"></i>':''}</div>
+      </div>
+    </div>`).join('');
+  document.querySelectorAll('#services .card').forEach(el=>el.onclick=()=>{
+    const id=el.dataset.id;
+    if(id==='combo'){state.services=new Set(state.services.has('combo')?[]:['combo'])}
+    else{state.services.delete('combo');state.services.has(id)?state.services.delete(id):state.services.add(id)}
+    haptic(); renderServices(); update();
+  });
+  __icons();
+}
+function renderMasters(){
+  $('#masters').innerHTML = MASTERS.map((m,i)=>`
+    <div data-id="${m.id}" class="card ${state.master===m.id?'sel':''} fade-up rounded-2xl p-3 flex items-center gap-4 cursor-pointer" style="animation-delay:${i*70}ms">
+      <div class="w-16 h-16 rounded-full border-2 ${state.master===m.id?'border-amber2-500':'border-graphite-600'} bg-graphite-700 flex items-center justify-center text-2xl font-bold text-amber2-400">${m.name[0]}</div>
+      <div class="flex-1">
+        <div class="font-semibold">${m.name}</div>
+        <div class="text-xs text-zinc-500">${m.role}</div>
+        <div class="text-xs mt-1.5 text-green-400 flex items-center gap-1"><i data-lucide="calendar-check" class="w-3 h-3"></i>Свободных окон сегодня: ${m.slots}</div>
+      </div>
+      <div class="flex items-center gap-1 text-amber2-400 text-sm font-semibold"><i data-lucide="star" class="w-4 h-4 fill-amber2-400"></i>${m.rate}</div>
+    </div>`).join('');
+  document.querySelectorAll('#masters .card').forEach(el=>el.onclick=()=>{
+    if(state.master!==el.dataset.id){state.time=null}
+    state.master=el.dataset.id; haptic(); renderMasters(); update();
+  });
+  __icons();
+}
+function renderDates(){
+  $('#dates').innerHTML = dates.map((d,i)=>`
+    <button data-i="${i}" class="card ${state.date===i?'sel':''} shrink-0 w-16 py-3 rounded-2xl flex flex-col items-center">
+      <span class="text-[11px] text-zinc-500">${i===0?'Сегодня':DAYS[d.getDay()]}</span>
+      <span class="text-xl font-bold ${state.date===i?'text-amber2-400':''}">${d.getDate()}</span>
+      <span class="text-[11px] text-zinc-500">${MONTHS[d.getMonth()]}</span>
+    </button>`).join('');
+  document.querySelectorAll('#dates button').forEach(el=>el.onclick=()=>{state.date=+el.dataset.i;state.time=null;haptic();renderDates();renderTimes();update()});
+}
+function renderTimes(){
+  const box=$('#times');
+  if(state.date===null){box.innerHTML='<div class="col-span-3 text-center text-sm text-zinc-500 py-8">Сначала выберите дату</div>';return}
+  const d=dates[state.date], now=new Date();
+  box.innerHTML = TIMES.map(t=>{
+    const [h,mi]=t.split(':').map(Number);
+    const past = state.date===0 && (h*60+mi) <= now.getHours()*60+now.getMinutes();
+    const off = past || busy(state.master||'',d,t);
+    return `<button data-t="${t}" ${off?'disabled':''} class="card ${state.time===t?'sel':''} py-3 rounded-xl font-semibold ${off?'opacity-30 line-through cursor-not-allowed':''}">${t}</button>`}).join('');
+  box.querySelectorAll('button:not([disabled])').forEach(el=>el.onclick=()=>{state.time=el.dataset.t;haptic();renderTimes();update()});
+}
+function totals(){
+  const list=SERVICES.filter(s=>state.services.has(s.id));
+  return {list, price:list.reduce((a,s)=>a+s.price,0), min:list.reduce((a,s)=>a+s.min,0)};
+}
+function renderSummary(){
+  const {list,price,min}=totals(), m=MASTERS.find(x=>x.id===state.master), d=dates[state.date];
+  const row=(ic,l,v)=>`<div class="flex items-center gap-3 p-4"><i data-lucide="${ic}" class="w-5 h-5 text-amber2-400 shrink-0"></i><div class="flex-1 text-sm text-zinc-500">${l}</div><div class="text-sm font-semibold text-right">${v}</div></div>`;
+  $('#summary').innerHTML =
+    row('scissors','Услуги',list.map(s=>s.name).join(' + '))+
+    row('user','Мастер',m.name)+
+    row('calendar','Дата',`${d.getDate()} ${MONTHS_FULL[d.getMonth()]}, ${DAYS[d.getDay()]}`)+
+    row('clock','Время',`${state.time} · ${min} мин`)+
+    row('wallet','К оплате',`<span class="text-amber2-400 text-base">${fmt(price)}</span>`);
+  __icons();
+}
+
+const LAST=3;
+const contactOk=()=>$('#name').value.trim().length>=2 && $('#phone').value.replace(/\D/g,'').length>=10;
+['name','phone'].forEach(id=>$('#'+id).addEventListener('input',update));
+function canNext(){
+  return [state.services.size>0, !!state.master, state.date!==null && !!state.time && contactOk(), true][state.step];
+}
+function update(){
+  const {list,price,min}=totals();
+  $('#total').textContent=fmt(price);
+  $('#totalTime').textContent=min?`${min} мин`:'';
+  const chips=[];
+  list.forEach(s=>chips.push(`<span class="px-2.5 py-1 rounded-full bg-graphite-700 border border-graphite-600 flex items-center gap-1"><i data-lucide="scissors" class="w-3 h-3 text-amber2-400"></i>${s.name}</span>`));
+  if(state.master) chips.push(`<span class="px-2.5 py-1 rounded-full bg-graphite-700 border border-graphite-600">${MASTERS.find(m=>m.id===state.master).name}</span>`);
+  if(state.date!==null) chips.push(`<span class="px-2.5 py-1 rounded-full bg-graphite-700 border border-graphite-600">${dates[state.date].getDate()} ${MONTHS[dates[state.date].getMonth()]}${state.time?', '+state.time:''}</span>`);
+  $('#chips').innerHTML=chips.join('');
+  $('#bar').classList.toggle('hide', state.step===4 || (state.step===0 && !list.length));
+  const labels=['Выбрать мастера','Выбрать время','Подтвердить','Отправить бронь в Telegram'];
+  const icons=['arrow-right','arrow-right','arrow-right','send'];
+  const nb=$('#nextBtn'); nb.disabled=!canNext();
+  nb.innerHTML=`${labels[state.step]||''}<i data-lucide="${icons[state.step]||'arrow-right'}" class="w-5 h-5"></i>`;
+  $('#dots').innerHTML=[0,1,2,3].map(i=>`<span class="h-1.5 rounded-full transition-all ${i===Math.min(state.step,3)?'w-6 bg-amber2-500':i<state.step?'w-1.5 bg-amber2-600':'w-1.5 bg-graphite-600'}"></span>`).join('');
+  const bb=$('#backBtn'); const showBack=state.step>0&&state.step<4;
+  bb.classList.toggle('opacity-0',!showBack); bb.classList.toggle('pointer-events-none',!showBack);
+  __icons();
+}
+function go(n){
+  const prev=state.step; state.step=n;
+  document.querySelectorAll('.step').forEach(s=>{
+    const i=+s.dataset.step;
+    s.classList.toggle('active',i===n);
+    s.classList.toggle('left',i<n);
+    if(i===n) s.scrollTop=0;
+  });
+  if(n===1) renderMasters();
+  if(n===2){ $('#dtMaster').textContent=MASTERS.find(m=>m.id===state.master).name; renderDates(); renderTimes(); }
+  if(n===3){
+    renderSummary();
+    const ic=$('#successIcon'); ic.classList.remove('animate'); void ic.offsetWidth; ic.classList.add('animate');
+  }
+  update();
+}
+$('#nextBtn').onclick=()=>{
+  if(!canNext())return;
+  if(state.step<LAST){go(state.step+1);return}
+  const {list,price,min}=totals(), m=MASTERS.find(x=>x.id===state.master), d=dates[state.date];
+  const contact={name:$('#name').value.trim(),phone:$('#phone').value.trim()};
+  const payload={contact,services:list.map(s=>s.name),master:m.name,date:d.toISOString().slice(0,10),time:state.time,price,duration:min,comment:$('#comment').value};
+  $('#sentText').textContent=`${m.name} ждёт вас ${d.getDate()} ${MONTHS_FULL[d.getMonth()]} в ${state.time} (это пример: запись никуда не отправлена)`;
+  try{ if(tg?.initData){tg.HapticFeedback?.notificationOccurred('success');tg.sendData(JSON.stringify(payload));} }catch{}
+  const row=(ic,l,v)=>`<div class="flex items-center gap-3 py-2.5"><i data-lucide="${ic}" class="w-4 h-4 text-amber2-400 shrink-0"></i><div class="text-zinc-500 w-24 shrink-0">${l}</div><div class="font-semibold text-right flex-1">${v}</div></div>`;
+  $('#tkNum').textContent=String(Math.floor(1000+Math.random()*9000));
+  $('#ticket').innerHTML=
+    row('user','Клиент',esc(contact.name))+
+    row('scissors','Услуга',list.map(s=>s.name).join(' + '))+
+    row('badge-check','Мастер',m.name)+
+    row('calendar-clock','Дата и время',`${d.getDate()} ${MONTHS_FULL[d.getMonth()]}, ${state.time}`)+
+    row('map-pin','Адрес','ул. Тверская, 12')+
+    `<div class="flex items-center justify-between border-t border-dashed border-graphite-600 mt-1 pt-3 pb-2"><span class="text-zinc-500">Сумма</span><span class="text-xl font-bold text-amber2-400">${fmt(price)}</span></div>`;
+  go(4);
+};
+$('#backBtn').onclick=()=>go(state.step-1);
+$('#resetBtn').onclick=()=>{state.services.clear();state.master=null;state.date=null;state.time=null;$('#comment').value='';$('#name').value='';$('#phone').value='';renderServices();go(0)};
+
+renderServices(); update();
+</script>
+</body>
+</html>

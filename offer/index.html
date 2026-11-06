@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Договор-оферта на разработку | БотоДел</title><meta name="robots" content="index,follow"><meta name="theme-color" content="#0C1A1F">
+<link rel="preload" href="../fonts/inter-Regular.woff" as="font" type="font/woff" crossorigin>
+<style>
+/* Tokens: primitive -> semantic */
+:root{
+  --c-ink:#0C1A1F; --c-ink-2:#142A31; --c-ink-3:#1D3840;
+  --c-mist:#EEF1EF; --c-paper:#FFFFFF; --c-line:#D3DBD8;
+  --c-text:#11201F; --c-muted:#566663;
+  --c-brass:#D9B36A; --c-brass-deep:#9A7430; --c-sage:#86B3A5;
+  --bg:var(--c-mist); --fg:var(--c-text); --fg-soft:var(--c-muted); --rule:var(--c-line);
+  --on-dark:#EAF1EF; --on-dark-soft:#9FB4B0; --rule-dark:rgba(234,241,239,.16);
+  --accent:var(--c-brass);
+  --f-display:"Lora",Georgia,"Times New Roman",serif;
+  --f-body:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  --s-1:4px;--s-2:8px;--s-3:12px;--s-4:16px;--s-5:24px;--s-6:32px;--s-7:48px;--s-8:72px;--s-9:112px;
+  --r:6px; --wrap:1120px;
+}
+@font-face{font-family:"Inter";font-weight:400;font-display:swap;src:url(../fonts/inter-Regular.woff) format("woff")}
+@font-face{font-family:"Inter";font-weight:500;font-display:swap;src:url(../fonts/inter-Medium.woff) format("woff")}
+@font-face{font-family:"Inter";font-weight:600;font-display:swap;src:url(../fonts/inter-SemiBold.woff) format("woff")}
+@font-face{font-family:"Lora";font-weight:400 700;font-style:normal;font-display:swap;src:url(../fonts/lora.woff) format("woff")}
+@font-face{font-family:"Lora";font-weight:400 700;font-style:italic;font-display:swap;src:url(../fonts/lora-italic.woff) format("woff")}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 16px/1.65 var(--f-body);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3,h4,p,ul,ol,dl,dd,figure{margin:0}
+ul,ol{padding:0;list-style:none}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--c-brass);outline-offset:3px;border-radius:3px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.wrap{width:100%;max-width:calc(var(--wrap) + 48px);margin:0 auto;padding:0 24px}
+.dark{background:var(--c-ink);color:var(--on-dark);--fg-soft:var(--on-dark-soft);--rule:var(--rule-dark)}
+.paper{background:var(--c-paper)}
+.sec{padding:var(--s-8) 0}
+@media(min-width:900px){.sec{padding:var(--s-9) 0}}
+.display{font-family:var(--f-display);font-weight:500;letter-spacing:-.012em;line-height:1.1}
+h2.display{font-size:clamp(30px,4.4vw,48px);max-width:18ch}
+.lead{font-size:clamp(17px,2vw,20px);line-height:1.6;color:var(--fg-soft);max-width:56ch}
+.small{font-size:14px;color:var(--fg-soft)}
+.btn{text-align:center;display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:14px 26px;border-radius:var(--r);border:1px solid transparent;font-weight:600;font-size:16px;text-decoration:none;transition:background-color .2s,border-color .2s,color .2s}
+.btn-primary{background:var(--c-brass);color:var(--c-ink)}
+.btn-primary:hover{background:#E6C47F}
+.btn-line{border-color:var(--rule-dark);color:var(--on-dark)}
+.btn-line:hover{border-color:var(--c-brass);color:var(--c-brass)}
+.light .btn-line,.btn-line.on-light{border-color:var(--rule);color:var(--fg)}
+.btn-line.on-light:hover{border-color:var(--c-brass-deep);color:var(--c-brass-deep)}
+.link{font-weight:600;text-decoration:underline;text-underline-offset:4px;text-decoration-color:var(--c-brass);text-decoration-thickness:2px}
+.link:hover{text-decoration-color:currentColor}
+/* header */
+.top{position:sticky;top:0;z-index:50;background:rgba(12,26,31,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--rule-dark);color:var(--on-dark)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:24px}
+.mark{font-family:var(--f-display);font-weight:600;font-size:22px;letter-spacing:-.01em;text-decoration:none}
+.nav{display:none;gap:28px;font-size:15px}
+.nav a{text-decoration:none;color:var(--on-dark-soft);transition:color .2s}
+.nav a:hover{color:var(--on-dark)}
+@media(min-width:860px){.nav{display:flex}}
+.top .btn{min-height:40px;padding:8px 18px;font-size:14px}
+/* footer */
+.foot{padding:var(--s-7) 0;font-size:14px}
+.foot .wrap{display:flex;flex-wrap:wrap;gap:16px 40px;justify-content:space-between}
+.foot a{color:var(--on-dark-soft);text-underline-offset:3px}
+.foot a:hover{color:var(--on-dark)}
+.foot ul{display:flex;gap:20px;flex-wrap:wrap}
+/* demo banner for example pages */
+.demo-note{background:var(--c-ink);color:var(--on-dark-soft);font-size:12px;text-align:center;padding:8px 16px;border-bottom:1px solid var(--rule-dark)}
+.demo-cta{background:var(--c-ink);color:var(--on-dark);padding:var(--s-7) 24px;text-align:left}
+.demo-cta .in{max-width:var(--wrap);margin:0 auto;display:grid;gap:20px}
+.demo-cta h3{font-family:var(--f-display);font-weight:500;font-size:clamp(24px,3.4vw,34px);line-height:1.15;max-width:22ch}
+.demo-cta p{color:var(--on-dark-soft);max-width:48ch}
+.demo-cta .row{display:flex;gap:12px;flex-wrap:wrap}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+.doc{padding:var(--s-7) 0 var(--s-8)}
+.doc .in{max-width:760px;margin:0 auto}
+.doc h1{font-family:var(--f-display);font-weight:500;font-size:clamp(30px,5vw,44px);line-height:1.15;letter-spacing:-.012em;margin-bottom:8px}
+.doc h2{font-family:var(--f-display);font-weight:500;font-size:24px;margin:40px 0 10px;line-height:1.25}
+.doc .date{color:var(--fg-soft);font-size:14px;margin-bottom:24px}
+.doc p{margin:12px 0}.doc ul,.doc ol{padding-left:22px;margin:10px 0}.doc ul{list-style:disc}.doc ol{list-style:decimal}.doc li{margin:6px 0}
+.doc a{color:var(--c-brass-deep);text-underline-offset:3px}
+.doc table{border-collapse:collapse;width:100%;font-size:15px;margin:16px 0}
+.doc th,.doc td{border-bottom:1px solid var(--rule);padding:12px 12px 12px 0;text-align:left;vertical-align:top}
+.doc th{font-weight:600;font-size:14px;color:var(--fg-soft)}
+.doc .nav2{display:flex;gap:20px;flex-wrap:wrap;font-size:14px;margin-bottom:var(--s-6)}
+</style></head><body>
+<header class="top"><div class="wrap"><a class="mark" href="../">БотоДел</a><nav class="nav" aria-label="Документы"><a href="../offer/">Оферта</a><a href="../privacy/">Политика данных</a><a href="../consent/">Согласие</a></nav><a class="btn btn-primary" href="../#contact">Написать</a></div></header>
+<main class="doc paper"><div class="wrap"><div class="in">
+<h1>Договор-оферта на разработку</h1>
+<p class="date">Действует с 01.11.2026</p>
+<p>Это публичная оферта: если Заказчик принимает её условия (п. 1.3), между ним и Исполнителем заключается договор на разработку.</p>
+<h2>1. Общие положения</h2>
+<p>1.1. <strong>Исполнитель</strong>: Пантин Артём Игоревич, самозанятый (плательщик налога на профессиональный доход), ИНН 350803022509, бренд «БотоДел».</p>
+<p>1.2. <strong>Заказчик</strong>: любое физическое лицо, индивидуальный предприниматель или организация, которые приняли оферту.</p>
+<p>1.3. <strong>Акцепт оферты</strong>: Заказчик подтверждает согласие с офертой одним из способов: пишет Исполнителю в VK, MAX или Telegram со словами «согласен с офертой», либо вносит предоплату по п. 3.2. Договор считается заключённым с даты акцепта.</p>
+<p>1.4. <strong>Термины</strong>:</p>
+<ul>
+<li><strong>Проект</strong>: чат-бот, мини-приложение или сайт, которые Исполнитель разрабатывает для Заказчика.</li>
+<li><strong>Задание</strong>: согласованное сторонами описание Проекта (форма в Приложении 2 или переписка, которую обе стороны подтвердили).</li>
+<li><strong>Демо</strong>: бесплатный кликабельный набросок одного главного сценария Проекта, не готовый к рабочему использованию.</li>
+<li><strong>Площадка</strong>: Telegram, VK или MAX, на которых работает Проект.</li>
+<li><strong>Результат</strong>: готовый Проект, переданный Заказчику по акту.</li>
+</ul>
+<h2>2. Предмет договора</h2>
+<p>2.1. Исполнитель разрабатывает для Заказчика Проект на выбранной Площадке по согласованному Заданию, а Заказчик принимает и оплачивает Результат.</p>
+<p>2.2. Перед платной работой Исполнитель по короткому брифу бесплатно делает Демо. Демо не обязывает Заказчика к оплате и не является Результатом. Если Демо не подошло, стороны расстаются без расчётов.</p>
+<p>2.3. Состав и объём работ, платформа, сроки и стоимость фиксируются в Задании. Всё, чего в Задании нет, считается доработкой и оценивается отдельно (раздел 5).</p>
+<p>2.4. Исполнитель работает самостоятельно, без найма сотрудников, и вправе привлекать сторонние сервисы и библиотеки для выполнения работ.</p>
+<h2>3. Стоимость и оплата</h2>
+<p>3.1. Стоимость Проекта указывается в Задании. Ориентиры из калькулятора на сайте (от 3 000 ₽ за простой чат-бот или лендинг) не являются офертой на конкретный Проект, итоговую цену Исполнитель называет после брифа.</p>
+<p>3.2. Порядок расчётов:</p>
+<ol>
+<li>Предоплата 30% от стоимости вносится после согласования Демо и Задания. Только после неё начинается платная работа.</li>
+<li>Остаток 70% вносится при сдаче Результата, до передачи полного доступа и прав.</li>
+</ol>
+<p>3.3. Оплата переводом на реквизиты Исполнителя, которые он сообщает Заказчику в личном сообщении. После каждого платежа, включая предоплату, Исполнитель формирует чек в приложении «Мой налог» и отправляет его Заказчику. Если Заказчик индивидуальный предприниматель или организация, он сообщает ИНН и наименование для указания в чеке.</p>
+<p>3.4. В стоимость не входят расходы, которые Заказчик оплачивает напрямую сторонним сервисам: хостинг, домен, платёжная система и эквайринг, платные тарифы платформ. Исполнитель называет эти расходы до начала работы.</p>
+<p>3.5. Предоплата возвращается, если Исполнитель не приступил к работе или отказался от неё. Если работа уже выполнена частично, возврат уменьшается на её стоимость по согласованию сторон.</p>
+<h2>4. Сроки и приёмка</h2>
+<p>4.1. Срок выполнения указывается в Задании и отсчитывается с дня, когда получена предоплата и Заказчик передал всё нужное для работы (тексты, логотип, доступы, ответы на вопросы). Если Заказчик задерживает эти материалы, срок сдвигается на тот же период.</p>
+<p>4.2. Исполнитель передаёт Результат в VK, MAX или Telegram ссылкой на работающий Проект и высылает акт по форме из Приложения 1.</p>
+<p>4.3. Заказчик проверяет Результат в течение 3 рабочих дней с получения акта и либо подписывает его (достаточно ответа «принято» в переписке), либо присылает письменные замечания по Заданию.</p>
+<p>4.4. Если в этот срок нет ни подписи, ни замечаний, Результат считается принятым. Если Заказчик уже использует Проект для работы с клиентами, это тоже считается приёмкой.</p>
+<p>4.5. Замечания, которые входят в Задание, исправляются по правилам раздела 5. Новые требования сверх Задания не являются основанием отказаться от приёмки.</p>
+<h2>5. Правки и поддержка</h2>
+<p>5.1. <strong>Правки</strong>: в стоимость входят до 3 раундов правок в рамках согласованного Задания. Раунд правок это один список замечаний, присланный за раз.</p>
+<p>5.2. <strong>Доработки</strong>: новые функции и изменения задания сверх того, что уже согласовано, оцениваются и оплачиваются отдельно, после письменного согласия стоимости.</p>
+<p>5.3. <strong>Исправление ошибок</strong>: 30 календарных дней с даты акта Исполнитель бесплатно исправляет ошибки, которые мешают Проекту работать по Заданию. Ошибкой не считается сбой Площадки, изменение её правил или действия самого Заказчика в админке.</p>
+<p>5.4. <strong>Дальнейшая поддержка</strong>: после 30 дней обслуживание и доработки договариваются отдельно и входят в новое Задание.</p>
+<h2>6. Права на результат</h2>
+<p>6.1. Исключительные права на исходный код и дизайн Проекта переходят к Заказчику только после полной оплаты и на основании письменного подтверждения Исполнителя (достаточно сообщения в переписке с указанием передачи прав и территории: вся Россия, бессрочно).</p>
+<p>6.2. До полной оплаты Заказчик может пользоваться работающим прототипом только в тестовых целях и не вправе копировать его или передавать третьим лицам.</p>
+<p>6.3. Исполнитель может использовать сторонние библиотеки и шаблоны. На них действуют их собственные лицензии, права на них Заказчику не передаются. Также Исполнитель сохраняет право на свои общие заготовки и приёмы, не связанные с бизнесом Заказчика.</p>
+<p>6.4. Заказчик отвечает за то, что предоставленные им тексты, фото, логотип и другой контент не нарушают чужих прав.</p>
+<p>6.5. Исполнитель может показывать скриншоты и описание Результата в портфолио только с согласия Заказчика (достаточно сообщения в переписке). Без согласия ничего, по чему можно узнать бизнес Заказчика, не публикуется.</p>
+<h2>7. Ответственность и ограничения</h2>
+<p>7.1. Telegram, VK и MAX меняют правила, блокируют аккаунты и иногда сбоят. Это вне контроля Исполнителя, он не отвечает за блокировку или ограничение работы Проекта площадкой, её технические сбои и изменение её тарифов и требований. Если площадка требует переработки, это доработка по п. 5.2.</p>
+<p>7.2. Заказчик сам отвечает за содержание своих услуг, цен, сроков и своё общение с клиентами, в том числе за рассылки: рекламу и рассылки через бота можно отправлять только с предварительного согласия получателя.</p>
+<p>7.3. Исполнитель не отвечает за упущенную выгоду и косвенный ущерб. Общая ответственность Исполнителя по договору ограничена суммой, фактически полученной от Заказчика по этому Проекту. Если Заказчик потребитель (физическое лицо для личных нужд), это ограничение применяется только в пределах, допустимых законом о защите прав потребителей.</p>
+<p>7.4. Заказчик сам хранит доступы к своим аккаунтам и не передаёт их третьим лицам. Исполнитель получает только те доступы, которые нужны для работы, и после сдачи удаляет их у себя.</p>
+<h2>8. Персональные данные</h2>
+<p>8.1. Данные самого Заказчика (имя, контакты, реквизиты для чека) Исполнитель обрабатывает как оператор в целях заключения и исполнения договора, по Политике обработки персональных данных на сайте Исполнителя.</p>
+<p>8.2. Данные клиентов Заказчика (записи, заказы, телефоны), которые собирает бот или сайт, обрабатывает сам Заказчик. Он является оператором этих данных и обязан сам получить согласие клиентов отдельным документом, опубликовать свою политику и проверить обязанность уведомления Роскомнадзора.</p>
+<p>8.3. Если Исполнитель по просьбе Заказчика размещает базу данных или делает доступ к ней, он действует по поручению Заказчика. Тогда стороны заключают отдельное письменное соглашение о поручении обработки (цели, перечень данных, срок, меры защиты).</p>
+<p>8.4. Данные граждан РФ хранятся на серверах, расположенных в России. Хостинг с серверами в России выбирается и оплачивается по п. 3.4. Исполнитель не выносит такие данные за пределы РФ без письменного согласия с учётом требований закона.</p>
+<p>8.5. Исполнитель не передаёт данные третьим лицам, кроме случаев, когда это нужно для работы Проекта (хостинг, платформа) или требуется законом.</p>
+<h2>9. Конфиденциальность, расторжение, споры, реквизиты</h2>
+<p>9.1. <strong>Конфиденциальность</strong>: стороны не разглашают доступы, бизнес-данные и переписку друг друга без согласия, кроме случаев, предусмотренных законом.</p>
+<p>9.2. <strong>Расторжение</strong>: Заказчик может отказаться от договора, оплатив фактически выполненную работу. Исполнитель может отказаться, если Заказчик не даёт нужных материалов более 14 дней или требует что-то незаконное; тогда неиспользованная часть предоплаты возвращается.</p>
+<p>9.3. <strong>Споры</strong>: сначала переговорами в переписке (срок ответа 10 дней), затем по законодательству РФ в суде по месту жительства Исполнителя (для потребителей: по правилам, установленным законом).</p>
+<p>9.4. <strong>Срок оферты</strong>: действует с 01.11.2026 до отзыва. Исполнитель меняет условия, но для принятых ранее Заданий действует редакция на дату акцепта.</p>
+<p>9.5. <strong>Реквизиты Исполнителя</strong>:</p>
+<ul>
+<li>ФИО: Пантин Артём Игоревич</li>
+<li>ИНН: 350803022509</li>
+<li>Статус: самозанятый (НПД)</li>
+<li>Связь: VK <a href="https://vk.ru/id808492928" rel="noopener">https://vk.ru/id808492928</a>, MAX (ссылка из профиля), Telegram @panyaaya, почта pantinartem2@gmail.com</li>
+<li>Реквизиты для перевода сообщаются Заказчику в личном сообщении.</li>
+</ul>
+<h2>Приложение 1. Акт сдачи-приёмки работ</h2>
+<p>Акт № ____ от ____</p>
+<p>Исполнитель: Пантин Артём Игоревич, самозанятый, ИНН 350803022509.</p>
+<p>Заказчик: ____ (ФИО или наименование, ИНН при наличии).</p>
+<ol>
+<li>Исполнитель выполнил работы по Заданию от ____: ____ (краткое описание Проекта, площадка).</li>
+<li>Результат передан ссылкой: ____. Доступы и исходный код передаются после полной оплаты.</li>
+<li>Стоимость работ: ____ ₽, из них предоплата ____ ₽ получена, к оплате осталось ____ ₽.</li>
+<li>Заказчик принял работы, качеством и сроками доволен, претензий нет. Гарантийный период бесплатного исправления ошибок: 30 дней с даты акта.</li>
+</ol>
+<p>Подпись или подтверждение «принято» в переписке: Исполнитель ____  Заказчик ____</p>
+<h2>Приложение 2. Задание на проект</h2>
+<table><thead><tr><th>Поле</th><th>Значение</th></tr></thead><tbody><tr><td>Тип Проекта</td><td>чат-бот, мини-приложение или сайт</td></tr><tr><td>Площадка</td><td>Telegram, VK или MAX</td></tr><tr><td>Главный сценарий</td><td>например, запись клиента на услугу с выбором времени</td></tr><tr><td>Функции в задании</td><td>____</td></tr><tr><td>Что не входит</td><td>____</td></tr><tr><td>Контент от Заказчика</td><td>тексты, логотип, цены, доступы, до ____</td></tr><tr><td>Стоимость, ₽</td><td>____; предоплата 30%: ____</td></tr><tr><td>Срок</td><td>____ рабочих дней после предоплаты</td></tr><tr><td>Расходы Заказчика</td><td>хостинг, домен, платёжная система: ____</td></tr><tr><td>Персональные данные</td><td>бот собирает имя и телефон клиентов: да или нет</td></tr></tbody></table>
+</div></div></main>
+<footer class="foot dark"><div class="wrap"><div>Пантин Артём Игоревич, самозанятый, ИНН 350803022509<br>Связь: <a href="https://vk.ru/id808492928">VK</a>, <a href="mailto:pantinartem2@gmail.com">pantinartem2@gmail.com</a></div><ul><li><a href="../">На главную</a></li></ul></div></footer>
+</body></html>
