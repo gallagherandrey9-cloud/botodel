@@ -3,9 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>БотоДел: чат-боты и сайты для вашего бизнеса. Сначала бесплатный пример</title>
+<title>Чат-боты и сайты для бизнеса за 2-5 дней | БотоДел</title>
 <meta name="description" content="Делаю чат-ботов и сайты для небольшого бизнеса за 2-5 дней. Сначала бесплатный пример, платите, только если понравится. От 3 000 ₽.">
 <meta name="theme-color" content="#0C1A1F">
+<!--HX--><link rel="icon" href="favicon.ico" sizes="any"><link rel="icon" href="icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="apple-touch-icon.png"><meta name="referrer" content="strict-origin-when-cross-origin"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "ProfessionalService", "name": "БотоДел", "url": "https://boto-del.site/", "image": "https://boto-del.site/og.png", "description": "Чат-боты и сайты для небольшого бизнеса за 2-5 дней. Сначала бесплатный пример.", "priceRange": "от 3 000 ₽", "areaServed": "RU", "founder": {"@type": "Person", "name": "Пантин Артём Игоревич"}, "sameAs": ["https://vk.ru/id808492928", "https://t.me/panyaaya"]}</script><!--/HX-->
 <meta property="og:type" content="website">
 <meta property="og:title" content="БотоДел: чат-боты и сайты для вашего бизнеса">
 <meta property="og:description" content="Сначала бесплатный пример. Платите, только если понравится. Готово за 2-5 дней.">
@@ -80,7 +81,7 @@ h2.display{font-size:clamp(30px,4.4vw,48px);max-width:18ch}
 .foot .wrap{display:flex;flex-wrap:wrap;gap:16px 40px;justify-content:space-between}
 .foot a{color:var(--on-dark-soft);text-underline-offset:3px}
 .foot a:hover{color:var(--on-dark)}
-.foot ul{display:flex;gap:20px;flex-wrap:wrap}
+.foot ul{display:flex;gap:4px 20px;flex-wrap:wrap}.foot ul a{display:inline-block;padding:12px 0}
 /* demo banner for example pages */
 .demo-note{background:var(--c-ink);color:var(--on-dark-soft);font-size:12px;text-align:center;padding:8px 16px;border-bottom:1px solid var(--rule-dark)}
 .demo-cta{background:var(--c-ink);color:var(--on-dark);padding:var(--s-7) 24px;text-align:left}
@@ -135,7 +136,17 @@ h2.display{font-size:clamp(30px,4.4vw,48px);max-width:18ch}
 .ping.on{opacity:1;transform:translate(-50%,0)}
 .ping b{display:block;font-size:14px}
 .ping span{font-size:13px;color:var(--c-muted)}
-.replay{margin-top:var(--s-7);background:none;border:0;color:var(--on-dark-soft);font-size:13px;text-decoration:underline;text-underline-offset:3px}
+.pf{display:inline-flex;border:1px solid var(--rule);border-radius:999px;padding:4px;gap:4px;background:var(--c-paper)}
+.pfb{min-height:40px;padding:8px 16px;border-radius:999px;border:0;background:transparent;font-size:14px;font-weight:500;color:var(--fg-soft)}
+.pfb.on{background:var(--c-ink);color:var(--on-dark)}
+#try-phone[data-pf="vk"] .screen{background:#ECEFF3}#try-phone[data-pf="vk"] .bar{background:#FFFFFF;border-color:#DCE1E6}#try-phone[data-pf="vk"] .bar b{color:#000}#try-phone[data-pf="vk"] .bar span{color:#818C99}#try-phone[data-pf="vk"] .ava{background:#2D81E0;color:#fff}
+#try-phone[data-pf="vk"] .msg.bot{background:#fff;color:#000}#try-phone[data-pf="vk"] .msg.me{background:#CCE4FF;color:#000}#try-phone[data-pf="vk"] .chip{border-color:#2D81E0;color:#2D81E0}#try-phone[data-pf="vk"] .typing{background:#fff}
+#try-phone[data-pf="max"] .screen{background:#14121F}#try-phone[data-pf="max"] .bar{background:#1E1B2E;border-color:#2E2A45}#try-phone[data-pf="max"] .ava{background:#7B6CF6;color:#fff}#try-phone[data-pf="max"] .bar span{color:#A99FFF}
+#try-phone[data-pf="max"] .msg.bot{background:#262238}#try-phone[data-pf="max"] .msg.me{background:#7B6CF6;color:#fff}#try-phone[data-pf="max"] .chip{border-color:#4A4370}#try-phone[data-pf="max"] .typing{background:#262238}
+#try-phone[data-pf="tg"] .msg.me{background:#2B5278;color:#fff}#try-phone[data-pf="tg"] .ava{background:#3E8FD8;color:#fff}#try-phone[data-pf="tg"] .bar span{color:#6AB2F2}
+.foot ul a{display:inline-block;padding:12px 0}
+.alt-contact .link{display:inline-block;padding:10px 0}
+.replay{margin-top:var(--s-7);min-height:44px;padding:10px 4px;background:none;border:0;color:var(--on-dark-soft);font-size:13px;text-decoration:underline;text-underline-offset:3px}
 /* platforms */
 .plat{display:grid;gap:var(--s-6);margin-top:var(--s-7)}
 @media(min-width:860px){.plat{grid-template-columns:repeat(3,1fr);gap:var(--s-7)}}
@@ -295,15 +306,18 @@ h2.display{font-size:clamp(30px,4.4vw,48px);max-width:18ch}
     </div>
 
     <div class="try">
-      <div class="stage" style="padding-bottom:0">
-        <div class="phone"><div class="screen">
-          <div class="bar"><div class="ava">Б</div><div><b>БотоДел, пример</b><span id="try-status">онлайн</span></div></div>
+      <div class="stage" style="padding-bottom:0;flex-direction:column;align-items:center;gap:16px">
+        <div class="pf" role="group" aria-label="Где показать бота">
+          <button type="button" class="pfb on" data-pf="tg" aria-pressed="true">Telegram</button><button type="button" class="pfb" data-pf="vk" aria-pressed="false">ВКонтакте</button><button type="button" class="pfb" data-pf="max" aria-pressed="false">MAX</button>
+        </div>
+        <div class="phone" id="try-phone" data-pf="tg"><div class="screen">
+          <div class="bar"><div class="ava">Б</div><div><b id="try-title">Бот в Telegram</b><span id="try-status">онлайн</span></div></div>
           <div class="feed" id="try-feed" aria-live="polite"></div>
         </div></div>
       </div>
       <div class="log">
         <h3>Попробуйте бота</h3>
-        <p class="lead" style="font-size:17px">Так выглядит бот для бизнеса: показывает услуги с ценами, записывает клиента на свободное время и считает стоимость.</p>
+        <p class="lead" style="font-size:17px">Так выглядит бот для бизнеса: показывает услуги с ценами, записывает клиента на свободное время и считает стоимость. Переключите приложение над телефоном: бот работает одинаково, меняется только оформление.</p>
         <ul class="try-list">
           <li><div><b>Каталог</b><span class="small">Услуги и цены в один тап</span></div></li>
           <li><div><b>Записаться</b><span class="small">Клиент выбирает время сам</span></div></li>
@@ -440,7 +454,7 @@ h2.display{font-size:clamp(30px,4.4vw,48px);max-width:18ch}
       </div>
     </div>
     <div class="about">
-      <h3>Привет, я <span id="about-name">Артем</span></h3>
+      <h3>Привет, я <span id="about-name">Артём</span></h3>
       <p>Делаю чат-ботов, мини-приложения и сайты для небольшого бизнеса. Работаю один, без менеджеров и посредников: вы говорите напрямую со мной.</p>
     </div>
   </div>
@@ -507,6 +521,11 @@ function onPick(k){
 }
 tc.bubble('bot','Добро пожаловать! Нажмите любую кнопку.');menu();
 
+document.querySelectorAll('.pfb').forEach(function(b){b.addEventListener('click',function(){
+  var k=b.dataset.pf,T={tg:'Бот в Telegram',vk:'Бот в группе ВКонтакте',max:'Бот в MAX'};
+  document.querySelectorAll('.pfb').forEach(function(x){var on=x===b;x.classList.toggle('on',on);x.setAttribute('aria-pressed',on)});
+  document.getElementById('try-phone').dataset.pf=k;document.getElementById('try-title').textContent=T[k];
+})});
 /* calculator */
 function rub(n){return String(n).replace(/\B(?=(\d{3})+(?!\d))/g,' ')+' ₽'}
 function dl(d){return d===1?'1 день':(d>=2&&d<=4?d+' дня':d+' дней')}
