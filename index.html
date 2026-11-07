@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Чат-боты и сайты для бизнеса за 2-5 дней | БотоДел</title>
 <meta name="description" content="Делаю чат-ботов и простые сайты для небольшого бизнеса во ВКонтакте, MAX и Telegram. Сначала бесплатный пример, платите, только если понравится. От 3 000 ₽.">
-<meta name="theme-color" content="#10151F">
+<meta name="theme-color" content="#1D1F21">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <link rel="icon" href="favicon.ico" sizes="any"><link rel="icon" href="icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="canonical" href="https://boto-del.site/">
@@ -16,16 +16,18 @@
 <meta property="og:url" content="https://boto-del.site/">
 <meta property="og:image" content="https://boto-del.site/og.png">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
-<meta name="twitter:card" content="summary_large_image"><link rel="preload" href="fonts/inter-400.woff" as="font" type="font/woff" crossorigin><link rel="preload" href="fonts/inter-display-600.woff" as="font" type="font/woff" crossorigin><script type="application/ld+json">{"@context": "https://schema.org", "@type": "ProfessionalService", "name": "БотоДел", "url": "https://boto-del.site/", "image": "https://boto-del.site/og.png", "description": "Чат-боты и простые сайты для небольшого бизнеса во ВКонтакте, MAX и Telegram. Сначала бесплатный пример.", "priceRange": "от 3 000 ₽", "areaServed": "RU", "founder": {"@type": "Person", "name": "Пантин Артём Игоревич"}, "sameAs": ["https://vk.ru/id808492928", "https://t.me/panyaaya"]}</script>
+<meta name="twitter:card" content="summary_large_image"><link rel="preload" href="fonts/onest-cyr.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="fonts/prata-cyr.woff2" as="font" type="font/woff2" crossorigin><script type="application/ld+json">{"@context": "https://schema.org", "@type": "ProfessionalService", "name": "БотоДел", "url": "https://boto-del.site/", "image": "https://boto-del.site/og.png", "description": "Чат-боты и простые сайты для небольшого бизнеса во ВКонтакте, MAX и Telegram. Сначала бесплатный пример.", "priceRange": "от 3 000 ₽", "areaServed": "RU", "founder": {"@type": "Person", "name": "Пантин Артём Игоревич"}, "sameAs": ["https://vk.ru/id808492928", "https://t.me/panyaaya"]}</script>
 <style>
-@font-face{font-family:"Inter";font-weight:400;font-display:swap;src:url(fonts/inter-400.woff) format("woff")}
-@font-face{font-family:"Inter";font-weight:600;font-display:swap;src:url(fonts/inter-600.woff) format("woff")}
-@font-face{font-family:"Inter Display";font-weight:600;font-display:swap;src:url(fonts/inter-display-600.woff) format("woff")}
+@font-face{font-family:"Onest";font-weight:400 700;font-display:swap;src:url(fonts/onest-cyr.woff2) format("woff2");unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:"Onest";font-weight:400 700;font-display:swap;src:url(fonts/onest-lat.woff2) format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:"Prata";font-weight:400;font-display:swap;src:url(fonts/prata-cyr.woff2) format("woff2");unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:"Prata";font-weight:400;font-display:swap;src:url(fonts/prata-lat.woff2) format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+
 :root{
-  --night:#10151F;--panel:#18202C;--panel-2:#1E2836;--line:#273244;--text:#EEF1F5;--muted:#9BA6B6;
-  --signal:#FFD54A;--signal-press:#F2C530;--on-signal:#10151F;--client:#2A3A55;
-  --f:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
-  --fd:"Inter Display","Inter",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  --night:#1D1F21;--panel:#26292C;--panel-2:#2E3135;--line:#383C40;--text:#F2F2EF;--muted:#A3A7AB;
+  --signal:#F2F2EF;--signal-press:#DCDCD8;--on-signal:#1D1F21;--client:#3A3E43;
+  --f:"Onest",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  --fd:"Prata",Georgia,"Times New Roman",serif;--fh:"Onest",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
   --r-panel:14px;--r-btn:10px;--r-bubble:18px;
   --ease:cubic-bezier(.2,.8,.2,1);
   --wrap:1160px;
@@ -45,10 +47,11 @@ button:disabled{cursor:not-allowed}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .wrap{width:100%;max-width:calc(var(--wrap) + 40px);margin:0 auto;padding:0 20px}
 @media(min-width:768px){.wrap{padding:0 32px;max-width:calc(var(--wrap) + 64px)}}
-.h1,.h2,.h3{font-family:var(--fd);font-weight:600;letter-spacing:-.03em;line-height:1.05}
-.h1{font-size:clamp(36px,6.4vw,64px)}
-.h2{font-size:clamp(30px,4.6vw,44px);letter-spacing:-.025em;line-height:1.1}
-.h3{font-size:clamp(22px,2.6vw,28px);letter-spacing:-.02em;line-height:1.2}
+.h1,.h2{font-family:var(--fd);font-weight:400;letter-spacing:-.01em;line-height:1.1}
+.h3{font-family:var(--fh);font-weight:600;letter-spacing:-.01em;line-height:1.25}
+.h1{font-size:clamp(38px,6.6vw,68px)}
+.h2{font-size:clamp(32px,4.8vw,48px)}
+.h3{font-size:clamp(20px,2.2vw,24px)}
 .lead{font-size:clamp(17px,1.9vw,19px);color:var(--muted);max-width:52ch}
 .muted{color:var(--muted)}
 .small{font-size:14px;line-height:1.5}
@@ -65,9 +68,9 @@ button:disabled{cursor:not-allowed}
   .link:hover{text-decoration-color:var(--signal)}
 }
 /* header */
-.top{position:sticky;top:0;z-index:40;background:rgba(16,21,31,.94);border-bottom:1px solid var(--line)}
+.top{position:sticky;top:0;z-index:40;background:rgba(29,31,33,.95);border-bottom:1px solid var(--line)}
 .top .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;height:64px}
-.mark{font-family:var(--fd);font-weight:600;font-size:20px;letter-spacing:-.02em;text-decoration:none;display:inline-flex;align-items:center;gap:10px;min-height:44px}
+.mark{font-family:var(--fd);font-weight:400;font-size:22px;letter-spacing:0;text-decoration:none;display:inline-flex;align-items:center;gap:10px;min-height:44px}
 .mark i{width:10px;height:10px;border-radius:50%;background:var(--signal);display:block}
 .nav{display:none;gap:4px}
 .nav a{color:var(--muted);text-decoration:none;font-size:15px;padding:10px 12px;border-radius:8px;transition:color .2s}
@@ -100,10 +103,10 @@ button:disabled{cursor:not-allowed}
 .facts div:nth-child(-n+2){border-bottom:1px solid var(--line)}
 @media(min-width:860px){.facts{grid-template-columns:repeat(4,minmax(0,1fr))}.facts div{border-bottom:0!important;padding:24px 20px 32px}.facts div:first-child{padding-left:0}.facts div+div{border-left:1px solid var(--line)}}
 .facts dt{font-size:14px;color:var(--muted);margin-bottom:4px}
-.facts dd{font-family:var(--fd);font-weight:600;font-size:clamp(22px,2.6vw,28px);letter-spacing:-.02em}
+.facts dd{font-family:var(--fd);font-weight:400;font-size:clamp(24px,2.8vw,32px)}
 /* ---------- phone & chat ---------- */
 .stage{position:relative;display:flex;flex-direction:column;align-items:center}
-.phone{width:min(100%,320px);border-radius:40px;padding:9px;background:#05080D;border:1px solid var(--line);box-shadow:0 30px 70px -30px rgba(0,0,0,.9)}
+.phone{width:min(100%,320px);border-radius:40px;padding:9px;background:#121314;border:1px solid var(--line);box-shadow:0 30px 70px -30px rgba(0,0,0,.9)}
 .screen{height:540px;border-radius:32px;background:var(--panel);overflow:hidden;display:flex;flex-direction:column;transition:background-color .28s var(--ease)}
 .chat-top{display:flex;align-items:center;gap:10px;padding:16px 16px 12px;border-bottom:1px solid var(--line);transition:background-color .28s var(--ease),border-color .28s var(--ease)}
 .ava{flex:none;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;font:600 14px var(--f);background:var(--signal);color:var(--on-signal);transition:background-color .28s var(--ease)}
@@ -117,7 +120,7 @@ button:disabled{cursor:not-allowed}
 .msg ul{margin-top:6px;display:grid;gap:3px;font-size:14px}
 .msg li{display:flex;justify-content:space-between;gap:18px}
 .chips{display:flex;flex-wrap:wrap;gap:6px;align-self:flex-start;max-width:94%}
-.chip{min-height:44px;padding:8px 14px;border-radius:999px;border:1px solid #3A4A63;font-size:14px;transition:border-color .2s,background-color .2s,transform .12s var(--ease)}
+.chip{min-height:44px;padding:8px 14px;border-radius:999px;border:1px solid #4A4F55;font-size:14px;transition:border-color .2s,background-color .2s,transform .12s var(--ease)}
 .chip:active:not(:disabled){transform:scale(.96)}
 .chip:disabled{opacity:.4}
 @media(hover:hover){.chip:hover:not(:disabled){border-color:var(--signal)}}
@@ -128,7 +131,7 @@ button:disabled{cursor:not-allowed}
 @keyframes msg{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 .lead-toast{position:absolute;left:50%;top:14px;width:min(290px,88%);transform:translate(-50%,-10px);opacity:0;pointer-events:none;background:var(--signal);color:var(--on-signal);border-radius:var(--r-panel);padding:12px 14px;box-shadow:0 18px 40px -14px rgba(0,0,0,.8);transition:opacity .28s var(--ease),transform .28s var(--ease)}
 .lead-toast.on{opacity:1;transform:translate(-50%,0)}
-.lead-toast b{display:block;font-size:15px}
+.lead-toast b{display:block;font-size:15px;font-weight:600}
 .lead-toast span{font-size:14px}
 .replay{margin-top:20px;min-height:44px;padding:10px 6px;font-size:14px;color:var(--muted);text-decoration:underline;text-underline-offset:4px}
 @media(hover:hover){.replay:hover{color:var(--text)}}
@@ -182,7 +185,7 @@ button:disabled{cursor:not-allowed}
 .work{margin-top:120px}
 .work-main{display:grid;gap:40px;align-items:center;padding-bottom:64px;border-bottom:1px solid var(--line)}
 @media(min-width:960px){.work-main{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:80px}}
-.shot{width:min(100%,280px);margin:0 auto;border-radius:34px;padding:8px;background:#05080D;border:1px solid var(--line)}
+.shot{width:min(100%,280px);margin:0 auto;border-radius:34px;padding:8px;background:#121314;border:1px solid var(--line)}
 .shot img{width:100%;height:auto;aspect-ratio:390/844;border-radius:27px;background:var(--panel)}
 .work h3{margin-bottom:12px}
 .work .for{color:var(--muted);margin-bottom:20px}
@@ -190,7 +193,7 @@ button:disabled{cursor:not-allowed}
 .work ul.does li{position:relative;padding-left:22px}
 .work ul.does li::before{content:"";position:absolute;left:0;top:.62em;width:10px;height:10px;border-radius:3px;border:1.5px solid var(--muted)}
 .work .row{display:flex;flex-wrap:wrap;align-items:center;gap:16px 28px}
-.price{font-family:var(--fd);font-weight:600;font-size:24px;letter-spacing:-.02em}
+.price{font-family:var(--fd);font-weight:400;font-size:26px}
 .price small{display:block;font:400 14px var(--f);color:var(--muted);letter-spacing:0}
 .work-pair{display:grid;gap:56px;padding-top:64px}
 @media(min-width:860px){.work-pair{grid-template-columns:repeat(2,minmax(0,1fr));gap:48px}}
@@ -214,7 +217,7 @@ button:disabled{cursor:not-allowed}
 .opts{border-top:1px solid var(--line)}
 .opt{display:grid;grid-template-columns:28px 1fr auto;gap:16px;padding:22px 0;border-bottom:1px solid var(--line);cursor:pointer;align-items:start}
 .opt input{position:absolute;opacity:0;width:1px;height:1px}
-.box{width:24px;height:24px;margin-top:2px;border-radius:6px;border:1.5px solid #4B5A70;display:grid;place-items:center;transition:background-color .15s var(--ease),border-color .15s var(--ease)}
+.box{width:24px;height:24px;margin-top:2px;border-radius:6px;border:1.5px solid #5A5F65;display:grid;place-items:center;transition:background-color .15s var(--ease),border-color .15s var(--ease)}
 .box svg{width:14px;height:14px;opacity:0;transform:scale(.6);transition:opacity .15s var(--ease),transform .15s var(--ease)}
 .opt input:checked+.box{background:var(--signal);border-color:var(--signal)}
 .opt input:checked+.box svg{opacity:1;transform:none}
@@ -225,16 +228,16 @@ button:disabled{cursor:not-allowed}
 .opt .pr small{display:block;color:var(--muted);font-weight:400;font-size:14px}
 .sum{position:sticky;top:88px;display:grid;gap:12px}
 .sum .bubble{background:var(--client);border-radius:var(--r-bubble);border-bottom-right-radius:6px;padding:20px}
-.sum .lbl{font-size:14px;color:var(--muted);margin-bottom:8px}
-.sum .total{font-family:var(--fd);font-weight:600;font-size:clamp(40px,5vw,52px);letter-spacing:-.03em;line-height:1.05;margin:2px 0 6px}
+.sum .lbl{font-size:14px;color:#BDC0C3;margin-bottom:8px}
+.sum .total{font-family:var(--fd);font-weight:400;font-size:clamp(40px,5vw,52px);letter-spacing:-.01em;line-height:1.05;margin:2px 0 6px}
 .sum .total mark{background:var(--signal);color:var(--on-signal);padding:0 8px;border-radius:8px}
-.sum ul{margin-top:14px;padding-top:14px;border-top:1px solid rgba(238,241,245,.14);display:grid;gap:4px;font-size:15px;color:#C9D1DC}
+.sum ul{margin-top:14px;padding-top:14px;border-top:1px solid rgba(242,242,239,.16);display:grid;gap:4px;font-size:15px;color:#CFD1D3}
 .sum .send{display:grid;gap:10px}
 .sum .send2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .sum .hint{font-size:14px;color:var(--muted);min-height:21px}
 .calc-bar{position:fixed;left:0;right:0;bottom:0;z-index:30;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:var(--panel);border-top:1px solid var(--line);transform:translateY(110%);transition:transform .25s var(--ease)}
 .calc-bar.on{transform:none}
-.calc-bar b{font-family:var(--fd);font-size:22px;letter-spacing:-.02em}
+.calc-bar b{font-family:var(--fd);font-weight:400;font-size:24px}
 .calc-bar .btn{min-height:44px;padding:10px 16px;font-size:15px}
 @media(min-width:960px){.calc-bar{display:none}}
 /* how: thread */
@@ -244,7 +247,7 @@ button:disabled{cursor:not-allowed}
 .tb{max-width:min(560px,88%);padding:14px 18px;border-radius:var(--r-bubble);font-size:17px}
 .tb.you{justify-self:start;background:var(--panel-2);border-bottom-left-radius:6px}
 .tb.me{justify-self:end;background:var(--client);border-bottom-right-radius:6px}
-.tb small{display:block;font-size:13px;color:var(--muted);margin-bottom:4px}
+.tb small{display:block;font-size:13px;color:#BDC0C3;margin-bottom:4px}
 .how-grid{display:grid;gap:48px}
 @media(min-width:960px){.how-grid{grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:80px}}
 /* terms */
@@ -261,7 +264,7 @@ button:disabled{cursor:not-allowed}
 /* cookie */
 .ckb{position:fixed;left:12px;right:12px;bottom:12px;z-index:50;max-width:420px;background:var(--panel);border:1px solid var(--line);border-radius:var(--r-panel);padding:16px;font-size:14px;box-shadow:0 20px 50px -20px #000}
 .ckb[hidden]{display:none}
-.ckb p{margin-bottom:12px;color:#C9D1DC}
+.ckb p{margin-bottom:12px;color:#CFD1D3}
 .ckb .r{display:flex;gap:8px}
 .ckb .btn{min-height:44px;padding:8px 16px;font-size:15px}
 @media(min-width:640px){.ckb{left:auto}}
@@ -412,11 +415,11 @@ button:disabled{cursor:not-allowed}
     </div>
     <div class="calc">
       <div class="opts" id="opts">
-        <label class="opt"><input type="checkbox" checked data-price="3000" data-days="2" data-title="Чат-бот"><span class="box"><svg viewBox="0 0 14 14" fill="none" stroke="#10151F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7.5l3.2 3L12 3.5"/></svg></span><span><b>Чат-бот</b><p>Меню с кнопками, список услуг, ответы на вопросы. Заявки приходят вам в мессенджер.</p></span><span class="pr tnum">3 000 ₽<small>2 дня</small></span></label>
-        <label class="opt"><input type="checkbox" data-price="4000" data-days="2" data-title="Мини-приложение"><span class="box"><svg viewBox="0 0 14 14" fill="none" stroke="#10151F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7.5l3.2 3L12 3.5"/></svg></span><span><b>Мини-приложение внутри мессенджера</b><p>Витрина с фото товаров, корзина или календарь записи.</p></span><span class="pr tnum">4 000 ₽<small>+2 дня</small></span></label>
-        <label class="opt"><input type="checkbox" data-price="3000" data-days="1" data-title="Сайт-визитка"><span class="box"><svg viewBox="0 0 14 14" fill="none" stroke="#10151F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7.5l3.2 3L12 3.5"/></svg></span><span><b>Сайт-визитка с заявками</b><p>Одна страница, удобная с телефона и компьютера. Заявки приходят вам в мессенджер.</p></span><span class="pr tnum">3 000 ₽<small>+1 день</small></span></label>
-        <label class="opt"><input type="checkbox" data-price="2000" data-days="1" data-title="Умный помощник"><span class="box"><svg viewBox="0 0 14 14" fill="none" stroke="#10151F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7.5l3.2 3L12 3.5"/></svg></span><span><b>Умный помощник (искусственный интеллект)</b><p>Отвечает клиентам на вопросы про ваши услуги и цены в любое время, даже ночью.</p></span><span class="pr tnum">2 000 ₽<small>+1 день</small></span></label>
-        <label class="opt"><input type="checkbox" data-price="2000" data-days="1" data-title="Приём оплаты"><span class="box"><svg viewBox="0 0 14 14" fill="none" stroke="#10151F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7.5l3.2 3L12 3.5"/></svg></span><span><b>Приём оплаты в боте</b><p>Клиент платит картой или через СБП, а бот сразу выдаёт заказ или доступ.</p></span><span class="pr tnum">2 000 ₽<small>+1 день</small></span></label>
+        <label class="opt"><input type="checkbox" checked data-price="3000" data-days="2" data-title="Чат-бот"><span class="box"><svg viewBox="0 0 14 14" fill="none" stroke="#1D1F21" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7.5l3.2 3L12 3.5"/></svg></span><span><b>Чат-бот</b><p>Меню с кнопками, список услуг, ответы на вопросы. Заявки приходят вам в мессенджер.</p></span><span class="pr tnum">3 000 ₽<small>2 дня</small></span></label>
+        <label class="opt"><input type="checkbox" data-price="4000" data-days="2" data-title="Мини-приложение"><span class="box"><svg viewBox="0 0 14 14" fill="none" stroke="#1D1F21" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7.5l3.2 3L12 3.5"/></svg></span><span><b>Мини-приложение внутри мессенджера</b><p>Витрина с фото товаров, корзина или календарь записи.</p></span><span class="pr tnum">4 000 ₽<small>+2 дня</small></span></label>
+        <label class="opt"><input type="checkbox" data-price="3000" data-days="1" data-title="Сайт-визитка"><span class="box"><svg viewBox="0 0 14 14" fill="none" stroke="#1D1F21" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7.5l3.2 3L12 3.5"/></svg></span><span><b>Сайт-визитка с заявками</b><p>Одна страница, удобная с телефона и компьютера. Заявки приходят вам в мессенджер.</p></span><span class="pr tnum">3 000 ₽<small>+1 день</small></span></label>
+        <label class="opt"><input type="checkbox" data-price="2000" data-days="1" data-title="Умный помощник"><span class="box"><svg viewBox="0 0 14 14" fill="none" stroke="#1D1F21" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7.5l3.2 3L12 3.5"/></svg></span><span><b>Умный помощник (искусственный интеллект)</b><p>Отвечает клиентам на вопросы про ваши услуги и цены в любое время, даже ночью.</p></span><span class="pr tnum">2 000 ₽<small>+1 день</small></span></label>
+        <label class="opt"><input type="checkbox" data-price="2000" data-days="1" data-title="Приём оплаты"><span class="box"><svg viewBox="0 0 14 14" fill="none" stroke="#1D1F21" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7.5l3.2 3L12 3.5"/></svg></span><span><b>Приём оплаты в боте</b><p>Клиент платит картой или через СБП, а бот сразу выдаёт заказ или доступ.</p></span><span class="pr tnum">2 000 ₽<small>+1 день</small></span></label>
       </div>
       <aside class="sum" id="sum" aria-labelledby="sum-lbl">
         <div class="bubble" aria-live="polite">

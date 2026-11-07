@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Пример: онлайн-запись в барбершоп через Telegram | БотоДел</title><meta name="description" content="Учебный пример мини-приложения записи для барбершопа: услуга, мастер, время, заявка владельцу в Telegram.">
-<meta name="theme-color" content="#17181A">
+<meta name="theme-color" content="#1D1F21">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <link rel="icon" href="../favicon.ico" sizes="any"><link rel="icon" href="../icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <link rel="canonical" href="https://boto-del.site/barbershop/">
@@ -16,13 +16,14 @@
 <meta property="og:image" content="https://boto-del.site/og.png">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="preload" href="../fonts/inter-400.woff" as="font" type="font/woff" crossorigin>
 <style>
-@font-face{font-family:"Inter";font-weight:400;font-display:swap;src:url(../fonts/inter-400.woff) format("woff")}
-@font-face{font-family:"Inter";font-weight:600;font-display:swap;src:url(../fonts/inter-600.woff) format("woff")}
-@font-face{font-family:"Inter Display";font-weight:600;font-display:swap;src:url(../fonts/inter-display-600.woff) format("woff")}
+@font-face{font-family:"Golos Text";font-weight:400 700;font-display:swap;src:url(../fonts/golos-cyr.woff2) format("woff2");unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:"Golos Text";font-weight:400 700;font-display:swap;src:url(../fonts/golos-lat.woff2) format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:"Dela Gothic One";font-weight:400;font-display:swap;src:url(../fonts/dela-cyr.woff2) format("woff2");unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:"Dela Gothic One";font-weight:400;font-display:swap;src:url(../fonts/dela-lat.woff2) format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+
 :root{--theme:#17181A;--bg:#17181A;--card:#202124;--card-2:#28292D;--line:#34363B;--paper:#F1ECE4;--muted:#A8A297;--blood:#9E2B34;--blood-press:#86232B;--ok:#7FB08A;--err:#F08A8A;
---f:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;--fd:"Inter Display","Inter",system-ui,sans-serif;--ease:cubic-bezier(.2,.8,.2,1);color-scheme:dark}
+--f:"Golos Text",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;--fd:"Dela Gothic One","Golos Text",system-ui,sans-serif;--ease:cubic-bezier(.2,.8,.2,1);color-scheme:dark}
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--paper);font:400 16px/1.5 var(--f);-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent}
@@ -38,14 +39,14 @@ a[href],button:not(:disabled),label[for]{cursor:pointer}button:disabled{cursor:n
 .back{flex:none;width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:var(--card);transition:opacity .2s,transform .12s var(--ease)}
 .back:active{transform:scale(.95)}
 .back[hidden]{display:none}
-.brand{font-family:var(--fd);font-weight:600;font-size:22px;letter-spacing:.06em}
+.brand{font-family:var(--fd);font-weight:400;font-size:24px;letter-spacing:.04em}
 .addr{font-size:14px;color:var(--muted)}
 .prog{display:flex;gap:6px;padding:12px 16px 0}
 .prog i{flex:1;height:3px;border-radius:2px;background:var(--line);transition:background-color .25s var(--ease)}
 .prog i.on{background:var(--paper)}
 .step-lbl{padding:14px 16px 0;font-size:14px;color:var(--muted)}
 main{flex:1;padding:6px 16px 120px}
-h1,h2{font-family:var(--fd);font-weight:600;letter-spacing:-.02em;line-height:1.15}
+h1,h2{font-family:var(--fd);font-weight:400;letter-spacing:0;line-height:1.15}
 h2{font-size:26px;margin:4px 0 18px}
 .panel{animation:in .26s var(--ease) both}
 @keyframes in{from{opacity:0;transform:translateX(12px)}to{opacity:1;transform:none}}
@@ -62,7 +63,7 @@ h2{font-size:26px;margin:4px 0 18px}
 .m{padding:16px 8px;border-radius:14px;background:var(--card);border:1.5px solid transparent;text-align:center;transition:border-color .2s,transform .12s var(--ease)}
 .m:active{transform:scale(.97)}
 .m[aria-pressed="true"]{border-color:var(--paper)}
-.ini{width:56px;height:56px;margin:0 auto 10px;border-radius:50%;display:grid;place-items:center;font:600 18px var(--fd);background:var(--card-2);border:1px solid var(--line)}
+.ini{width:56px;height:56px;margin:0 auto 10px;border-radius:50%;display:grid;place-items:center;font:400 18px var(--fd);background:var(--card-2);border:1px solid var(--line)}
 .m b{display:block;font-weight:600}
 .m small{font-size:13px;color:var(--muted)}
 .any{margin-top:8px}
@@ -71,7 +72,7 @@ h2{font-size:26px;margin:4px 0 18px}
 .days::-webkit-scrollbar{display:none}
 .d{flex:none;width:60px;padding:10px 0;border-radius:12px;background:var(--card);text-align:center;border:1.5px solid transparent;transition:border-color .2s}
 .d small{display:block;font-size:12px;color:var(--muted)}
-.d b{font:600 20px var(--fd)}
+.d b{font:400 20px var(--fd)}
 .d[aria-pressed="true"]{border-color:var(--paper)}
 .slots{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
 .s{min-height:44px;border-radius:10px;background:var(--card);font-weight:600;font-size:15px;border:1.5px solid transparent;transition:border-color .2s,transform .12s var(--ease)}
